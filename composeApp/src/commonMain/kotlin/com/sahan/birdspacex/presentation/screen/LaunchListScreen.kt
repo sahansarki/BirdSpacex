@@ -16,6 +16,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -76,41 +77,43 @@ fun LaunchListContent(
         topBar = {
             CenterAlignedTopAppBar(
                 title = { Text("Launch Liste") },
-                actions = {
-                    IconButton(onClick = { onAction(SpaceAction.Refresh()) }) {
-                        Text("Güncelle")
-                    }
-                },
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
-        Box(
-            modifier = Modifier
-                .padding(padding)
-                .fillMaxSize(),
+        PullToRefreshBox(
+            isRefreshing = state.isRefreshing,
+            onRefresh = { onAction(SpaceAction.Refresh()) },
+            modifier = Modifier.fillMaxSize()
         ) {
-            when {
-                state.isLoading && state.launches.isEmpty() -> LoadingView(message = "Yükleniyor..")
+            Box(
+                modifier = Modifier
+                    .padding(padding)
+                    .fillMaxSize(),
+            ) {
+                when {
+                    state.isLoading && state.launches.isEmpty() -> LoadingView(message = "Yükleniyor..")
 
-                state.error != null && state.launches.isEmpty() -> ErrorView(
-                    title = state.error.title,
-                    message = state.error.message,
-                    onRetry = { onAction(SpaceAction.Retry) },
-                )
+                    state.error != null && state.launches.isEmpty() -> ErrorView(
+                        title = state.error.title,
+                        message = state.error.message,
+                        onRetry = { onAction(SpaceAction.Retry) },
+                    )
 
-                state.launches.isEmpty() -> EmptyLaunchesView()
+                    state.launches.isEmpty() -> EmptyLaunchesView()
 
-                else -> LaunchList(
-                    launches = state.launches,
-                    onLaunchClick = { launchId -> onAction(SpaceAction.OnLaunchClick(launchId)) },
-                )
-            }
+                    else -> LaunchList(
+                        launches = state.launches,
+                        onLaunchClick = { launchId -> onAction(SpaceAction.OnLaunchClick(launchId)) },
+                    )
+                }
 
-            if (state.isRefreshing) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                if (state.isRefreshing) {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
             }
         }
+
     }
 }
 

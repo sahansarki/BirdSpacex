@@ -1,5 +1,7 @@
 package com.sahan.birdspacex.presentation.navigation
 
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,6 +17,8 @@ fun SpaceNavGraph() {
     NavHost(
         navController = navController,
         startDestination = SpaceDestination.LaunchList,
+        enterTransition = { slideInHorizontally() },
+        exitTransition = { slideOutVertically() }
     ) {
         composable<SpaceDestination.LaunchList> {
             LaunchListRoute(
