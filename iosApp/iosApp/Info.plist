@@ -4,5 +4,7 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+    <key>BASE_URL</key>
+    <string>https://api.spacexdata.com/v4/</string>
 </dict>
 </plist>
