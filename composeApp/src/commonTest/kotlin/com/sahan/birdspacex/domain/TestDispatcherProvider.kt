@@ -1,4 +1,4 @@
-package com.sahan.birdspacex
+package com.sahan.birdspacex.domain
 
 import com.sahan.birdspacex.domain.util.DispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher

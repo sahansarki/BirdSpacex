@@ -22,6 +22,7 @@ coroutines = "1.10.2"
 sqlite = "2.6.2"
 androidx-navigation = "2.9.0-rc01"
 coil = "3.2.0"
+turbine = "1.2.1"
 
 
 [libraries]
@@ -45,6 +46,9 @@ compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-previ
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 #Navigation
 androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
+
+#Turbine
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 #Coil
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
