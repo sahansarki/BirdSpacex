@@ -34,7 +34,7 @@ class LaunchListViewModel(
             )
 
             is SpaceAction.OnLaunchClick -> {
-                viewModelScope.launch {
+                launch(dispatcherProvider.main) {
                     emitEvent(SpaceEvent.NavigateToDetail(action.launchId))
                 }
             }
@@ -58,7 +58,7 @@ class LaunchListViewModel(
     ) {
         if (loadInProgress) return
 
-        viewModelScope.launch {
+        launch(dispatcher = dispatcherProvider.io) {
             loadInProgress = true
             updateState {
                 if (userInitiated) {

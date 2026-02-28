@@ -29,7 +29,7 @@ class LaunchDetailViewModel(
             }
 
             is SpaceAction.OpenExternalLink -> {
-                viewModelScope.launch {
+                launch(dispatcher = dispatcherProvider.main) {
                     emitEvent(SpaceEvent.OpenUrl(action.url))
                 }
             }
@@ -42,7 +42,7 @@ class LaunchDetailViewModel(
     }
 
     private fun loadDetail(launchId: String) {
-        viewModelScope.launch {
+        launch(dispatcher = dispatcherProvider.io) {
             updateState {
                 it.copy(isLoading = true, error = null)
             }
