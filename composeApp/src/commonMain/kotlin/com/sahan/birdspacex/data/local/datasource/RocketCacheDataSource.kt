@@ -2,7 +2,7 @@ package com.sahan.birdspacex.data.local.datasource
 
 import com.sahan.birdspacex.data.local.db.dao.RocketDao
 import com.sahan.birdspacex.data.local.db.entity.RocketCacheEntity
-import com.sahan.birdspacex.data.response.model.RocketResponseModel
+import com.sahan.birdspacex.data.remote.response.model.RocketResponseModel
 import kotlin.time.Clock
 
 class RocketCacheDataSource(

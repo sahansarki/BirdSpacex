@@ -1,7 +1,7 @@
 package com.sahan.birdspacex.data.api.`interface`
 
-import com.sahan.birdspacex.data.response.model.LaunchResponseModel
-import com.sahan.birdspacex.data.response.model.RocketResponseModel
+import com.sahan.birdspacex.data.remote.response.model.LaunchResponseModel
+import com.sahan.birdspacex.data.remote.response.model.RocketResponseModel
 
 interface SpaceXApi {
     suspend fun getLaunches(): List<LaunchResponseModel>

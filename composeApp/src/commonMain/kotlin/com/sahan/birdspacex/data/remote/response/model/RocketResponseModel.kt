@@ -1,4 +1,4 @@
-package com.sahan.birdspacex.data.response.model
+package com.sahan.birdspacex.data.remote.response.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

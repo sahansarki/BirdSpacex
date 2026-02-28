@@ -1,8 +1,8 @@
 package com.sahan.birdspacex.data.api.imp
 
 import com.sahan.birdspacex.data.api.`interface`.SpaceXApi
-import com.sahan.birdspacex.data.response.model.LaunchResponseModel
-import com.sahan.birdspacex.data.response.model.RocketResponseModel
+import com.sahan.birdspacex.data.remote.response.model.LaunchResponseModel
+import com.sahan.birdspacex.data.remote.response.model.RocketResponseModel
 import com.sahan.birdspacex.network.AppConfig
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

@@ -2,9 +2,9 @@ package com.sahan.birdspacex.data.local.datasource
 
 import com.sahan.birdspacex.data.local.db.dao.LaunchDao
 import com.sahan.birdspacex.data.local.db.entity.LaunchCacheEntity
-import com.sahan.birdspacex.data.response.model.LaunchResponseModel
-import com.sahan.birdspacex.data.response.model.LinksResponseModel
-import com.sahan.birdspacex.data.response.model.PatchResponseModel
+import com.sahan.birdspacex.data.remote.response.model.LaunchResponseModel
+import com.sahan.birdspacex.data.remote.response.model.LinksResponseModel
+import com.sahan.birdspacex.data.remote.response.model.PatchResponseModel
 import kotlin.time.Clock
 
 class LaunchCacheDataSource(
