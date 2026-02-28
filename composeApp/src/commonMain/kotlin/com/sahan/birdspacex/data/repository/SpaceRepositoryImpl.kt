@@ -90,35 +90,12 @@ class SpaceRepositoryImpl(
         )
     }
 
-    private suspend fun mapLaunches(launches: List<LaunchResponseModel>): List<LaunchListItemUiModel> {
-        val rocketNameById = resolveRocketNames(launches)
+    private fun mapLaunches(launches: List<LaunchResponseModel>): List<LaunchListItemUiModel> {
         return launches.map { launch ->
-            val mapped = launchListItemMapper.map(launch)
-            val rocketId = launch.rocket
-            mapped.copy(
-                rocketName = if (rocketId.isNullOrBlank()) {
-                    "-"
-                } else {
-                    rocketNameById[rocketId] ?: "-"
-                },
-            )
+            launchListItemMapper.map(launch)
         }
     }
 
-    private suspend fun resolveRocketNames(launches: List<LaunchResponseModel>): Map<String, String> =
-        coroutineScope {
-            val uniqueRocketIds = launches.mapNotNull { it.rocket }.toSet()
-            val semaphore = Semaphore(permits = 5)
-
-            uniqueRocketIds.map { rocketId ->
-                async {
-                    semaphore.withPermit {
-                        rocketId to (resolveRocketUiModel(rocketId)?.name
-                            ?: "-")
-                    }
-                }
-            }.awaitAll().toMap()
-        }
 
     private suspend fun resolveRocketUiModel(rocketId: String?): RocketUiModel? {
         rocketId ?: return null

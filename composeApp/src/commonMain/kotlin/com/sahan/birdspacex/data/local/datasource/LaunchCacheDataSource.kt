@@ -38,7 +38,7 @@ class LaunchCacheDataSource(
             launches.map { launch ->
                 LaunchCacheEntity(
                     id = launch.id,
-                    missionName = launch.name.orEmpty().ifBlank { "Unknown Mission" },
+                    missionName = launch.name.orEmpty().ifBlank { "-" },
                     dateUtc = launch.dateUtc.orEmpty(),
                     rocketId = launch.rocket.orEmpty(),
                     success = launch.success,

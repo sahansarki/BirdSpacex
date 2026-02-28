@@ -8,6 +8,8 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) {
         modules(
             commonModule,
             domainModule,
+            presentationModule,
+            coroutineModule,
             dataModule
         )
     }

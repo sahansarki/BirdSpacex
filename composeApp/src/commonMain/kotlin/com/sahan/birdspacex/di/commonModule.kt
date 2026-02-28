@@ -1,6 +1,7 @@
 package com.sahan.birdspacex.di
 
 import com.sahan.birdspacex.platform.PlatformDateFormatter
+import com.sahan.birdspacex.platform.PlatformUrlOpener
 import kotlinx.serialization.json.Json
 import org.koin.dsl.module
 
@@ -13,4 +14,5 @@ val commonModule = module {
         }
     }
     single { PlatformDateFormatter() }
+    single { PlatformUrlOpener() }
 }

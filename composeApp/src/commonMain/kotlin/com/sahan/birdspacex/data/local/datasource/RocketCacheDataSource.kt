@@ -31,8 +31,8 @@ class RocketCacheDataSource(
         rocketDao.insert(
             RocketCacheEntity(
                 id = rocket.id,
-                name = rocket.name.orEmpty().ifBlank { "Unknown Rocket" },
-                description = rocket.description.orEmpty().ifBlank { "No description available." },
+                name = rocket.name.orEmpty().ifBlank { "-" },
+                description = rocket.description.orEmpty().ifBlank { "-" },
                 timestamp = now,
             ),
         )
