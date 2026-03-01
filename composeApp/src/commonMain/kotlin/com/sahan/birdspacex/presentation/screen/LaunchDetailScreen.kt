@@ -89,7 +89,7 @@ fun LaunchDetailContent(
                 title = { Text("Launch Detail") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Text("Geri")
+                        Text("Back")
                     }
                 },
             )
@@ -97,7 +97,7 @@ fun LaunchDetailContent(
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         when {
-            state.isLoading && state.selectedLaunchDetail == null -> LoadingView("Yükleniyor..")
+            state.isLoading && state.selectedLaunchDetail == null -> LoadingView("Loading…")
 
             state.error != null && state.selectedLaunchDetail == null -> ErrorView(
                 title = state.error.title,
@@ -141,7 +141,7 @@ private fun DetailBody(
     ) {
         Text(text = detail.missionName, style = MaterialTheme.typography.headlineSmall)
         Text(text = detail.launchDateTimeText, style = MaterialTheme.typography.bodyMedium)
-        Text(text = "Durum: ${detail.successText}", style = MaterialTheme.typography.bodyMedium)
+        Text(text = "Status: ${detail.successText}", style = MaterialTheme.typography.bodyMedium)
 
         val webcastUrl = detail.webcastUrl.orEmpty()
         if (webcastUrl.isNotBlank()) {
@@ -174,12 +174,12 @@ private fun DetailBody(
 
         detail.links.article?.let { link ->
             Button(onClick = { onOpenLink(link) }) {
-                Text("Makale")
+                Text("Article")
             }
         }
         detail.links.wikipedia?.let { link ->
             Button(onClick = { onOpenLink(link) }) {
-                Text("Vikipedia")
+                Text("Wikipedia")
             }
         }
     }
@@ -192,13 +192,13 @@ private fun LaunchDetailContentPreview() {
         state = SpaceUiState(
             selectedLaunchDetail = LaunchDetailUiModel(
                 missionName = "FalconSat",
-                launchDateTimeText = "Mart 24, 2006 22:30",
+                launchDateTimeText = "March 24, 2006 22:30",
                 rocket = RocketUiModel(
                     name = "Falcon 1",
-                    description = "Fırlatma Sistemi",
+                    description = "The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.",
                 ),
-                successText = "Başarısız",
-                details = "Motor arızası",
+                successText = "Failure",
+                details = "Ratsat was carried to orbit on the first successful orbital launch of any privately funded and developed, liquid-propelled carrier rocket, the SpaceX Falcon 1",
                 webcastUrl = "-",
                 links = ExternalLinksUiModel(
                     article = "-",

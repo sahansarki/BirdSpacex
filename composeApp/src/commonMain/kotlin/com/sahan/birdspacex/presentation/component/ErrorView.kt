@@ -38,7 +38,7 @@ fun ErrorView(
             textAlign = TextAlign.Center,
         )
         Button(onClick = onRetry) {
-            Text("Tekrar Dene")
+            Text("Retry")
         }
     }
 }
@@ -47,8 +47,8 @@ fun ErrorView(
 @Composable
 private fun ErrorViewPreview() {
     ErrorView(
-        title = "Hata",
-        message = "Bir Hata Oluşttu",
+        title = "Error",
+        message = "An error occurred",
         onRetry = {},
     )
 }

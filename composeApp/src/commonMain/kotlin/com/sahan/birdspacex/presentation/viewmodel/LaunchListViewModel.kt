@@ -1,6 +1,7 @@
 package com.sahan.birdspacex.presentation.viewmodel
 
 import com.sahan.birdspacex.domain.DefaultDispatcherProvider
+import com.sahan.birdspacex.domain.extension.toReadableMessage
 import com.sahan.birdspacex.domain.usecase.GetLaunchesUseCase
 import com.sahan.birdspacex.domain.util.DispatcherProvider
 import com.sahan.birdspacex.domain.util.DomainResult
@@ -99,7 +100,7 @@ class LaunchListViewModel(
                         it.copy(
                             isLoading = false, isRefreshing = false,
                             error = UiError(
-                                title = "HATA",
+                                title = "ERROR",
                                 message = result.error.toReadableMessage(),
                             ),
                         )
@@ -109,15 +110,5 @@ class LaunchListViewModel(
 
             loadInProgress = false
         }
-    }
-}
-
-private fun NetworkError.toReadableMessage(): String {
-    return when (this) {
-        NetworkError.NoInternet -> "Internet bağlantınızı kontrol ediniz."
-        NetworkError.Timeout -> "Bir hata oluştu."
-        NetworkError.Serialization -> "Bir hata oluştu."
-        is NetworkError.Server -> "Bir hata oluştu."
-        is NetworkError.Unknown -> "Bir hata oluştu."
     }
 }

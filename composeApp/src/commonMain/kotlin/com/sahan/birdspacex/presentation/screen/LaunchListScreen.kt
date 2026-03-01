@@ -76,7 +76,7 @@ fun LaunchListContent(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Launch Liste") },
+                title = { Text("Launch List") },
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -92,7 +92,7 @@ fun LaunchListContent(
                     .fillMaxSize(),
             ) {
                 when {
-                    state.isLoading && state.launches.isEmpty() -> LoadingView(message = "Yükleniyor..")
+                    state.isLoading && state.launches.isEmpty() -> LoadingView(message = "Loading…")
 
                     state.error != null && state.launches.isEmpty() -> ErrorView(
                         title = state.error.title,
@@ -137,7 +137,7 @@ private fun LaunchList(
 private fun EmptyLaunchesView() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(
-            text = "Herhangi bir data yok.",
+            text = "There is no data available.",
             style = MaterialTheme.typography.titleMedium,
         )
     }
@@ -152,10 +152,10 @@ private fun LaunchListContentPreview() {
                 LaunchListItemUiModel(
                     id = "1",
                     missionName = "Trailblazer",
-                    launchDateText = "Ağustos 03, 2008",
+                    launchDateText = "Aug 03, 2008",
                     rocketName = "Falcon 1",
                     status = LaunchStatus.FAILURE,
-                    successText = "Başarısız",
+                    successText = "Failure",
                 ),
             ),
         ),

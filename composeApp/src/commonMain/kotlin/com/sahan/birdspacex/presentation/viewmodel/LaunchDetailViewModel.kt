@@ -1,14 +1,13 @@
 package com.sahan.birdspacex.presentation.viewmodel
 
 import com.sahan.birdspacex.domain.DefaultDispatcherProvider
+import com.sahan.birdspacex.domain.extension.toReadableMessage
 import com.sahan.birdspacex.domain.usecase.GetLaunchDetailUseCase
 import com.sahan.birdspacex.domain.util.DispatcherProvider
 import com.sahan.birdspacex.domain.util.DomainResult
-import com.sahan.birdspacex.domain.util.NetworkError
 import com.sahan.birdspacex.presentation.mvi.SpaceAction
 import com.sahan.birdspacex.presentation.mvi.SpaceEvent
 import com.sahan.birdspacex.presentation.mvi.UiError
-import kotlinx.coroutines.launch
 
 class LaunchDetailViewModel(
     private val getLaunchDetailUseCase: GetLaunchDetailUseCase,
@@ -59,7 +58,7 @@ class LaunchDetailViewModel(
                     }
 
                     if (result.fromCache) {
-                        emitEvent(SpaceEvent.ShowSnackbar("Cache data gösteriliyor.."))
+                        emitEvent(SpaceEvent.ShowSnackbar("Cached data is being displayed…"))
                     }
                 }
 
@@ -69,7 +68,7 @@ class LaunchDetailViewModel(
                             isLoading = false,
                             isRefreshing = false,
                             error = UiError(
-                                title = "Launch detayı yüklenirken bir hata oluştu",
+                                title = "An error occurred while loading the launch details.",
                                 message = result.error.toReadableMessage(),
                             ),
                         )
@@ -77,15 +76,5 @@ class LaunchDetailViewModel(
                 }
             }
         }
-    }
-}
-
-private fun NetworkError.toReadableMessage(): String {
-    return when (this) {
-        NetworkError.NoInternet -> "Internet bağlantınızı kontrol ediniz."
-        NetworkError.Timeout -> "Bir hata oluştu."
-        NetworkError.Serialization -> "Bir hata oluştu."
-        is NetworkError.Server -> "Bir hata oluştu."
-        is NetworkError.Unknown -> "Bir hata oluştu."
     }
 }

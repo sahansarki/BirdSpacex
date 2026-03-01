@@ -33,8 +33,8 @@ fun Boolean?.toStatus(): LaunchStatus {
 
 fun LaunchStatus.toText(): String {
     return when (this) {
-        LaunchStatus.SUCCESS -> "Başarılı"
-        LaunchStatus.FAILURE -> "Başarısız"
+        LaunchStatus.SUCCESS -> "Success"
+        LaunchStatus.FAILURE -> "Failure"
         LaunchStatus.UNKNOWN -> "-"
     }
 }

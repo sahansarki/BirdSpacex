@@ -9,16 +9,6 @@ fun RemoteImage(
     imageUrl: String?,
     modifier: Modifier,
 ) {
-//    if (imageUrl.isNullOrBlank()) {
-//        Box(
-//            modifier = modifier.background(MaterialTheme.colorScheme.secondaryContainer),
-//            contentAlignment = Alignment.Center,
-//        ) {
-//            Text(text = "N/A", color = MaterialTheme.colorScheme.onSecondaryContainer)
-//        }
-//        return
-//    }
-
     AsyncImage(
         model = imageUrl,
         contentDescription = null,

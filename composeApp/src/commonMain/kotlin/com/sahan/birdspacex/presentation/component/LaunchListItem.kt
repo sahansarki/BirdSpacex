@@ -115,10 +115,10 @@ private fun LaunchListItemPreview() {
         item = LaunchListItemUiModel(
             id = "1",
             missionName = "FalconSat",
-            launchDateText = "Mart 24, 2006",
+            launchDateText = "March 24, 2006",
             rocketName = "Falcon 1",
             status = LaunchStatus.FAILURE,
-            successText = "Başarısız",
+            successText = "Failure",
             patchImageUrl = "",
         ),
         onClick = {},
