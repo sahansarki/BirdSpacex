@@ -1,4 +1,4 @@
-# SpaceX Launches - Kotlin Multiplatform Case Study
+# SpaceX Launches - Kotlin Multiplatform 
 Kotlin Multiplatform app that lists SpaceX launches and shows launch details (including rocket details, links, and video playback) with shared business logic and platform-specific integrations where needed.
 
 ## Architecture Overview
