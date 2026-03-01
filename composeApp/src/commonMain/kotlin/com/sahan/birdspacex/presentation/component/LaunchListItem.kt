@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sahan.birdspacex.domain.extension.preventDoubleClickNoRipple
 import com.sahan.birdspacex.domain.model.LaunchListItemUiModel
 import com.sahan.birdspacex.domain.model.LaunchStatus
 
@@ -34,7 +35,9 @@ fun LaunchListItem(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onClick(item.id) },
+            .preventDoubleClickNoRipple(5000L) {
+                onClick(item.id)
+            },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
         ),
