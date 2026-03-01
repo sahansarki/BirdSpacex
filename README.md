@@ -72,7 +72,7 @@ Source sets in `composeApp/src`:
   - actual: `AppConfig.android.kt` (BuildConfig), `AppConfig.ios.kt` (Info.plist `BASE_URL`)
 - Media player:
   - expect: `platform/video/VideoPlayer.kt`
-  - actual: `VideoPlayer.android.kt` (ExoPlayer/WebView), `VideoPlayer.ios.kt` (AVPlayer/WKWebView)
+  - actual: `VideoPlayer.android.kt` (WebView), `VideoPlayer.ios.kt` (WKWebView)
 
 ## Testing
 Run all configured tests:
